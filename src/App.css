@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.garden-space {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/construction-paper.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.memory-flower {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.flower-img {
+  width: 80px;
+  transition: transform 0.2s ease;
+}
+
+.memory-flower:hover .flower-img {
+  transform: scale(1.1);
+}
+
+.memory-popup {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: -80px;
+  width: 180px;
+  background: white;
+  border: 2px solid #c7e8ca;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.memory-flower:hover .memory-popup {
+  display: block;
+}
+
+.memory-popup img {
+  max-width: 100%;
+  border-radius: 8px;
+}
