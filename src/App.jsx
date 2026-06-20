@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [flowers, setFlowers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/memories")
+      .then((res) => res.json())
+      .then((data) => setFlowers(data));
+  }, []);
 
   function handleGardenClick(event) {
     if (event.target.className !== "garden-space") return;
@@ -14,14 +20,23 @@ function App() {
     const rect = event.currentTarget.getBoundingClientRect();
 
     const newFlower = {
-      id: Date.now(),
       x: event.clientX - rect.left,
       y: event.clientY - rect.top,
       text,
       photo
     };
 
-    setFlowers([...flowers, newFlower]);
+    fetch("http://localhost:3001/memories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newFlower)
+    })
+      .then((res) => res.json())
+      .then((savedFlower) => {
+        setFlowers([...flowers, savedFlower]);
+      });
   }
 
   return (
