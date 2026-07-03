@@ -13,10 +13,10 @@ function App() {
   function handleGardenClick(event) {
     if (event.target.className !== "garden-space") return;
 
-    const text = prompt("Write a memory:");
+    const text = prompt("Plant your memory:");
     if (!text) return;
 
-    const photo = prompt("Paste an image URL, or leave blank:");
+    const photo = prompt("Paste an image URL (optional):");
     const rect = event.currentTarget.getBoundingClientRect();
 
     const newFlower = {
